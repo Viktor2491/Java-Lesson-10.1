@@ -5,10 +5,8 @@ import org.junit.jupiter.api.Test;
 
 public class RadioTest {
     Radio rad = new Radio();
-
     @Test
     public void shouldCheckBeDefaultNumberARadioStation() {
-
         int expected = 0;
         int actual = rad.getNumberCurrentRadioStation();
         Assertions.assertEquals(expected, actual);

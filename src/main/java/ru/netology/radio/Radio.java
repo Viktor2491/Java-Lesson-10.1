@@ -1,5 +1,13 @@
 package ru.netology.radio;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+
 public class Radio {
     private int numberCurrentRadioStation;
     private int minNumberStation = 0;
@@ -10,18 +18,11 @@ public class Radio {
     private int minVolue = 0;
     private int maxVolume = 100;
 
-    public Radio() {
-
-    }
 
     public Radio(int countStation) {
         this.countStation = countStation;
     }
 
-    public int getNumberCurrentRadioStation() {
-
-        return numberCurrentRadioStation;
-    }
 
     public void setNumberCurrentRadioStation(int numberCurrentRadioStation) {
 
@@ -52,10 +53,6 @@ public class Radio {
         }
     }
 
-
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
 
     public void setCurrentVolume(int currentVolume) {
 
