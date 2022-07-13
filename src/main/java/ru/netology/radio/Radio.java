@@ -1,17 +1,32 @@
 package ru.netology.radio;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+
 public class Radio {
     private int numberCurrentRadioStation;
+    private int minNumberStation = 0;
+    private int maxNumberStation = 9;
+    private int countStation = 10;
+
     private int currentVolume;
+    private int minVolue = 0;
+    private int maxVolume = 100;
 
-    public int getNumberCurrentRadioStation() {
 
-        return numberCurrentRadioStation;
+    public Radio(int countStation) {
+        this.countStation = countStation;
     }
+
 
     public void setNumberCurrentRadioStation(int numberCurrentRadioStation) {
 
-        if (numberCurrentRadioStation < 0 || numberCurrentRadioStation > 9) {
+        if (numberCurrentRadioStation < minNumberStation || numberCurrentRadioStation > countStation - 1) {
             return;
         }
 
@@ -21,8 +36,8 @@ public class Radio {
 
     public void setNextNumberRadioStation() {
 
-        if (numberCurrentRadioStation >= 9) {
-            setNumberCurrentRadioStation(0);
+        if (numberCurrentRadioStation >= countStation - 1) {
+            setNumberCurrentRadioStation(minNumberStation);
         } else {
             setNumberCurrentRadioStation(numberCurrentRadioStation + 1);
         }
@@ -31,29 +46,17 @@ public class Radio {
 
     public void setPrevNumberRadioStation() {
 
-        if (numberCurrentRadioStation <= 0) {
-            setNumberCurrentRadioStation(9);
+        if (numberCurrentRadioStation <= minNumberStation) {
+            setNumberCurrentRadioStation(maxNumberStation);
         } else {
             setNumberCurrentRadioStation(numberCurrentRadioStation - 1);
         }
     }
 
-    public void setToMaxNumberRadioStation() {
-        numberCurrentRadioStation = 9;
-    }
-
-    public void setToMinNumberRadioStation() {
-        numberCurrentRadioStation = 0;
-    }
-
-
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
 
     public void setCurrentVolume(int currentVolume) {
 
-        if (currentVolume > 10 || currentVolume < 0) {
+        if (currentVolume > maxVolume || currentVolume < minVolue) {
             return;
         }
 
@@ -62,22 +65,15 @@ public class Radio {
 
     public void setIncreaseVolume() {
 
-        if (currentVolume < 10) {
+        if (currentVolume < maxVolume) {
             currentVolume++;
         }
     }
 
     public void setTurnDownTheVolume() {
-        if (currentVolume > 0) {
+        if (currentVolume > minVolue) {
             currentVolume--;
         }
     }
 
-    public void setToMaxVolume() {
-        currentVolume = 10;
-    }
-
-    public void setToMinVolume() {
-        currentVolume = 0;
-    }
 }
